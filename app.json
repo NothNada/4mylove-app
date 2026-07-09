@@ -37,6 +37,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "75c6bb14-8e7a-42a3-9d31-ee8e947d2adf"
+      }
+    },
+    "owner": "joaogameplays-team"
   }
 }
