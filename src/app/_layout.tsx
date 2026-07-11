@@ -1,3 +1,4 @@
+import "@/global.css"
 import { SplashScreen, Stack } from "expo-router";
 import { useFonts } from 'expo-font';
 import { useEffect } from "react";
@@ -20,5 +21,15 @@ export default function RootLayout() {
   }
 
 
-  return <Stack />;
+  return (
+    <Stack
+      screenOptions={{
+        headerShown: false,
+        contentStyle: { flex: 1 },
+      }}
+    >
+      <Stack.Screen name="index" />
+      <Stack.Screen name="sobre" />
+    </Stack>
+  );
 }
