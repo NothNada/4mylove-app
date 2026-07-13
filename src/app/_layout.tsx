@@ -1,35 +1,46 @@
 import "@/global.css"
-import { SplashScreen, Stack } from "expo-router";
-import { useFonts } from 'expo-font';
-import { useEffect } from "react";
+import { SplashScreen } from "expo-router"
+import { useFonts } from "expo-font"
+import { useEffect } from "react"
 
-SplashScreen.preventAutoHideAsync();
+import { NativeTabs } from "expo-router/unstable-native-tabs"
+
+SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    'NerdFont': require('./../../assets/fonts/0xProto/0xProtoNerdFont-Regular.ttf'),
-  });
+    Inter: require("./../../assets/fonts/Inter/Inter-Variable.ttf"),
+  })
 
-  useEffect(()=>{
-    if(loaded || error){
-      SplashScreen.hideAsync();
+  useEffect(() => {
+    if (loaded || error) {
+      SplashScreen.hideAsync()
     }
-  }, [loaded, error]);
+  }, [loaded, error])
 
   if (!loaded && !error) {
-    return null;
+    return null
   }
 
-
   return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-        contentStyle: { flex: 1 },
+    <NativeTabs
+      backgroundColor="#121212"
+      tintColor="#fff"
+      indicatorColor="#EC4899"
+      labelStyle={{
+        default: { fontFamily: "Inter", fontSize: 12, color: "rgba(255,255,255,0.35)" },
+        selected: { fontFamily: "Inter", fontSize: 12, color: "#EC4899", fontWeight: "600" },
       }}
     >
-      <Stack.Screen name="index" />
-      <Stack.Screen name="sobre" />
-    </Stack>
-  );
+      <NativeTabs.Trigger name="index">
+        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon md="favorite" />
+      </NativeTabs.Trigger>
+
+      <NativeTabs.Trigger name="galeria" disableAutomaticContentInsets>
+        <NativeTabs.Trigger.Label>Memórias</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon md="photo_library" />
+      </NativeTabs.Trigger>
+    </NativeTabs>
+  )
 }

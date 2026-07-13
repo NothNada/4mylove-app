@@ -70,8 +70,8 @@ function FallingHeart({
 
 export function HeartsBackground() {
   return (
-    <View style={StyleSheet.absoluteFill}>
-      <Animated.View style={{ flex: 1, backgroundColor: "#0a0015" }}>
+    <View style={StyleSheet.absoluteFill} pointerEvents="none">
+      <Animated.View style={{ flex: 1 }}>
         {hearts.map((h) => (
           <FallingHeart key={h.id} {...h} />
         ))}
